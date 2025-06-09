@@ -193,3 +193,8 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# Machine Learning
+wandb/
+outputs/
+bge-base-en-v1.5-futo-swipe-base/

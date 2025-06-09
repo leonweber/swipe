@@ -1,0 +1,13 @@
+# Dataset configuration
+# Dataset source configuration
+name: "futo-org/swipe.futo.org"
+positive_column: "word"
+anchor_column: "image"
+
+preprocess:
+  add_markers: true
+
+train_subsample_proportion: 1.0
+val_subsample_proportion: 1.0
+test_subsample_proportion: 1.0
+

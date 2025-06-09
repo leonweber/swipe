@@ -1,0 +1,27 @@
+# Main configuration file
+# This file is composed of defaults that can be overridden via command line or other config files
+
+defaults:
+  - model: base
+  - training: base
+  - dataset: base
+  - _self_
+
+# Global configuration
+project_name: "train-futo-model"
+debug: False
+action: train
+timestamp: ${now:%Y%m%d_%H%M%S}
+
+# Output directories
+output_dir: ${oc.env:OUTPUT_DIR,"./outputs"}
+log_dir: ${output_dir}/logs
+
+# Logging
+logging:
+  level: INFO
+  format: "[%(asctime)s][%(name)s][%(levelname)s] - %(message)s"
+  file: ${log_dir}/${now:%Y-%m-%d_%H-%M-%S}.log
+
+hydra:
+  output_subdir: ""  # Disables per-run directory creation

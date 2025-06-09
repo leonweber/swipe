@@ -1,0 +1,45 @@
+
+# Evaluation configuration
+num_distractors: 10_000
+eval_matryoshka_dims: false
+
+# Callbacks configuration
+callbacks:
+  wandb:
+    _target_: transformers.integrations.WandbCallback
+    
+training_arguments:
+  _target_: sentence_transformers.SentenceTransformerTrainingArguments
+  # Training configuration
+  num_train_epochs: 4
+  per_device_train_batch_size: 4
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 1
+  learning_rate: 2.0e-5
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+
+  # Learning rate scheduler
+  lr_scheduler_type: "cosine"
+
+  # Optimization
+  optim: "adamw_torch_fused"
+  tf32: false
+  bf16: false
+
+  # Checkpointing and logging
+  output_dir: "${oc.env:OUTPUT_DIR,'./outputs'}/checkpoints"
+  run_name: "run-${timestamp}"
+  logging_steps: 10
+  save_strategy: "steps"
+  save_steps: 1000
+  eval_strategy: "steps"
+  # eval_steps: 1000
+  eval_steps: 10
+  save_total_limit: 1
+  load_best_model_at_end: true
+  metric_for_best_model: "eval_dim_512_cosine_recall@3"
+
+batch_sampler: "batch_sampler" # use "no_duplicates" to exclude duplicates, might be slow
+enable_profiling: false
