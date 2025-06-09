@@ -1,0 +1,93 @@
+[tool.poetry]
+name = "train-futo-model"
+version = "0.1.0"
+description = ""
+authors = ["Leon Weber-Genzel <leonweber@posteo.de>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.11.*"
+transformers = "^4.52.3"
+datasets = "^3.6.0"
+jsonlines = "^4.0.0"
+matplotlib = "^3.10.3"
+sentence-transformers = "^4.1.0"
+torch = "^2.7.1"
+protobuf = "^6.31.1"
+accelerate = "^1.7.0"
+wandb = "^0.20.1"
+tensorboard = "^2.19.0"
+ruff = "^0.11.13"
+pydoclint = "^0.6.6"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.4.0"
+
+[tool.ruff]
+# Enable pycodestyle (E) and pyflakes (F) rules by default
+lint.select = ["E", "F"]
+
+
+# Maximum line length
+line-length = 79
+# Target Python version
+target-version = "py311"
+
+[tool.ruff.lint.mccabe]
+# Maximum complexity for McCabe (cyclomatic complexity)
+max-complexity = 10
+
+[tool.ruff.lint.isort]
+# Use one known_standard_library
+known-first-party = ["train_futo_model"]
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.pydoclint]
+# Docstring style to check (google, numpy, sphinx)
+style = "google"
+# Check for missing docstrings
+check_return_type = true
+check_return_type_placeholder = "..."
+# Check for missing parameter documentation
+check_param_docs = true
+# Check for missing return documentation
+check_return_docs = true
+# Check for missing yield documentation
+check_yield_docs = true
+# Check for missing raises documentation
+check_raise_docs = true
+# Check for missing variables documentation
+check_variable_docs = true
+# Check for missing attribute documentation
+check_attribute_docs = true
+# Check for missing function/method documentation
+check_functions = true
+# Check for missing module documentation
+check_modules = true
+# Check for missing class documentation
+check_classes = true
+# Check for missing method documentation
+check_methods = true
+# Check for missing property documentation
+check_properties = true
+# Check for missing exception documentation
+check_exceptions = true
+# Check for missing type documentation
+check_types = true
+# Check for missing variable type documentation
+check_variable_types = true
+# Check for missing parameter type documentation
+check_param_types = true
+# Check for missing return type documentation
+check_return_types = true
+# Check for missing yield type documentation
+check_yield_types = true
+# Check for missing raises type documentation
+check_raise_types = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
